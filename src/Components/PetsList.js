@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PetItem from './PetItem';
 import { observer } from 'mobx-react';
 import petStore from '../petStore';
+import CreateModal from './CreateModal';
 function PetsList() {
   const [query, setQuery] = useState('');
   const [type, setType] = useState('');
@@ -45,6 +46,7 @@ function PetsList() {
                 <option value="Dog">Dog</option>
                 <option value="Rabbit">Rabbit</option>
               </select>
+              <CreateModal />
             </div>
           </div>
         </div>

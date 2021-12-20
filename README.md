@@ -12,7 +12,7 @@
 
 1. In the Modal body create a form with the following fields: name,type and image, docs are your friend! [docs](https://react-bootstrap.github.io/components/forms/)
 2. Create a state to hold our data.
-3. Create a `handleChange` method that modifies our state object and pass it to every field in their `onChange` proprety.
+3. Create a `handleChange` method that modifies our state object and pass it to every field in their `onChange` proprety. Also add a `name` proprety to each field that matches the state object.
 4. Create a `handleSubmit` method that for now console logs our state data and closes the modal. Also pass this method to your submit button.
 5. Don't forget to prevent the page from refreshing.
 6. Import our modal in `PetsList` and render it at the top.
@@ -30,4 +30,5 @@
 3. Import the update modal in your `PetItem` component below the adopt button.
 4. For updating, we need the old values for the user to see, so let's pass the old data from `PetItem` to our modal using props.
 5. In our update modal get those props to create an inital value for our state, also add an id value because we already have one. but how to show them in our fields? hint: use the `value` proprety.
-6. In our mobx store create an `update` method thats takes an arguemnt and replaces the old pet with the new data coming with the same `petId`.
+6. In our mobx store create an `update` method thats takes an arguemnt and replaces the old pet with the new data coming with the same `id`. Don't forget to mark it as an `action`.
+7. In `UpdateModal` call this new method in the `handleSubmit` function.

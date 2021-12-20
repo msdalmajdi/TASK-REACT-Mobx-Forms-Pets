@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import petStore from '../petStore';
-function CreateModal() {
+function UpdateModal(props) {
   const [show, setShow] = useState(false);
   const [pet, setPet] = useState({
-    name: '',
-    type: '',
-    image: '',
+    id: props.pet.id,
+    name: props.pet.name,
+    type: props.pet.type,
+    image: props.pet.image,
   });
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,17 +17,17 @@ function CreateModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    petStore.addPet(pet);
+    petStore.updatePet(pet);
     handleClose();
   };
   return (
     <>
       <button type="button" class="btn btn-info" onClick={handleShow}>
-        Add a pet
+        Update
       </button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a pet</Modal.Title>
+          <Modal.Title>Update a pet</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -36,6 +37,7 @@ function CreateModal() {
                 onChange={handleChange}
                 name="name"
                 type="text"
+                value={pet.name}
                 placeholder="Pet name"
               />
             </Form.Group>
@@ -44,6 +46,7 @@ function CreateModal() {
               <Form.Control
                 onChange={handleChange}
                 name="type"
+                value={pet.type}
                 type="text"
                 placeholder="Pet type"
               />
@@ -53,6 +56,7 @@ function CreateModal() {
               <Form.Control
                 onChange={handleChange}
                 name="image"
+                value={pet.image}
                 type="text"
                 placeholder="Pet image url"
               />
@@ -64,7 +68,7 @@ function CreateModal() {
             Close
           </button>
           <button type="button" class="btn btn-info" onClick={handleSubmit}>
-            Add
+            Update
           </button>
         </Modal.Footer>
       </Modal>
@@ -72,4 +76,4 @@ function CreateModal() {
   );
 }
 
-export default CreateModal;
+export default UpdateModal;
