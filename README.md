@@ -31,7 +31,7 @@ In this task, you are going to crate a form to add a new pet to the pets website
 
 ### 3. Creating in mobx.
 
-1. In our `petStore` let's create a method for adding a pet. Don't forget to mark it as an actions.
+1. In our `petStore` let's create a method for adding a pet.
 2. It takes an argument with our pet data but we still need an `id`, can you genereta an `id`?
 3. In `PetCreateModal.js` import our store and in `handleSubmit` call our new method and pass it our state.
 
