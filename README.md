@@ -1,4 +1,15 @@
-### Bootstrap Modal
+# 🐶 Pets Form 
+
+In this task, you are going to crate a form to add a new pet to the pets website. You are going to use `MOBX` and `react-bootstrap`.
+
+## Instructions
+- Fork and clone [this repository](https://github.com/JoinCODED/TASK-REACT-SP-Pets-Forms) to your `Development` folder.
+
+
+
+
+
+### 1. Bootstrap Modal
 
 1. `npm install react-bootstrap bootstrap@5.1.3`
 2. Create a file called `PetCreateModal.js` in `Components`
@@ -8,7 +19,7 @@
 6. Create a button that when pressed calls the `handleShow` function.
 
 
-### Bootstrap Form
+### 2. Bootstrap Form
 
 1. In the Modal body create a form with the following fields: `name`,`type` and image docs are your friend! [click here for the docs](https://react-bootstrap.github.io/components/forms/)
 2. Create a state to hold our data.
@@ -18,13 +29,13 @@
 6. Don't forget to prevent the page from refreshing.
 7. Import our modal in `PetsList` and render it at the top.
 
-### Creating in mobx.
+### 3. Creating in mobx.
 
 1. In our `petStore` let's create a method for adding a pet. Don't forget to mark it as an actions.
 2. It takes an argument with our pet data but we still need an `id`, can you genereta an `id`?
 3. In `PetCreateModal.js` import our store and in `handleSubmit` call our new method and pass it our state.
 
-### Updating a pet data.
+### 4. Updating a pet data.
 
 1. Create a file called `PetUpdateModal.js` in `Components`
 2. Copy the same modal from your `PetCreateModal` component and fix the namings.
