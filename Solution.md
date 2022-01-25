@@ -233,13 +233,13 @@ Adopt
 5. In our update modal get those props to create an inital value for our state, also add an id value because we already have one. but how to show them in our fields? hint: use the `value` property.
 
 ```javascript
-function PetUpdateModal(props) {
+function PetUpdateModal({pet}) {
   const [show, setShow] = useState(false);
-  const [pet, setPet] = useState({
-    id: props.pet.id,
-    name: props.pet.name,
-    type: props.pet.type,
-    image: props.pet.image,
+  const [petForm, setPetForm] = useState({
+    id: pet.id,
+    name: pet.name,
+    type: pet.type,
+    image: pet.image,
   });
 ...
 ```
@@ -251,7 +251,7 @@ function PetUpdateModal(props) {
                 onChange={handleChange}
                 name="name"
                 type="text"
-                value={pet.name}
+                value={petForm.name}
                 placeholder="Pet name"
               />
             </Form.Group>
@@ -260,7 +260,7 @@ function PetUpdateModal(props) {
               <Form.Control
                 onChange={handleChange}
                 name="type"
-                value={pet.type}
+                value={petForm.type}
                 type="text"
                 placeholder="Pet type"
               />
@@ -270,7 +270,7 @@ function PetUpdateModal(props) {
               <Form.Control
                 onChange={handleChange}
                 name="image"
-                value={pet.image}
+                value={petForm.image}
                 type="text"
                 placeholder="Pet image url"
               />
