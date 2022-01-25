@@ -2,11 +2,11 @@
 
 1. `npm install react-bootstrap bootstrap@5.1.3`
 2. Create a file called `PetCreateModal.js` in `Components`
-3. Setup your component and import `Modal` from bootstrap.
+3. Setup your component and import `Modal` from bootstrap. [Create the modal as the docs suggets](https://react-bootstrap.github.io/components/modal/)
 4. Create a state for showing the modal with an intial value of `false`.
 5. Create a `handleClose` and `handleShow` functions that changes our state to `false` or `true`.
 6. Create a button that when pressed calls the `handleShow` function.
-7. create your modal as the docs suggests [click here for the docs](https://react-bootstrap.github.io/components/modal/)
+
 
 ### Bootstrap Form
 
