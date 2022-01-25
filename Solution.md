@@ -1,7 +1,7 @@
 ### Bootstrap Modal
 
 1. `npm install react-bootstrap bootstrap@5.1.3`
-2. Create a file called `PetCreateModal.js` in `Components`
+2. Create a file called `PetModal.js` in `Components`
 3. Setup your component and import `Modal` from bootstrap.
 
 ```javascript
@@ -87,7 +87,7 @@ const [petForm, setPetForm] = useState({
 });
 ```
 
-3. Create a `handleChange` method that modifies our state object and pass it to every field in their `onChange` property. 
+3. Create a `handleChange` method that modifies our state object and pass it to every field in their `onChange` property.
 
 ```javascript
 const handleChange = (e) => {
@@ -121,7 +121,9 @@ const handleChange = (e) => {
               />
             </Form.Group>
 ```
+
 4. Add a `name` property to each field that matches the state object.
+
 ```javascript
             <Form.Group className="mb-3">
               <Form.Label>Pet name</Form.Label>
@@ -151,6 +153,7 @@ const handleChange = (e) => {
               />
             </Form.Group>
 ```
+
 5. Create a `handleSubmit` method that for now console logs our state data and closes the modal. Also pass this method to your submit button.
 
 ```javascript
@@ -171,7 +174,7 @@ const handleSubmit = (e) => {
 7. Import our modal in `PetsList` and render it at the top.
 
 ```javascript
-<PetCreateModal />
+<PetModal />
 ```
 
 ### Creating in mobx.
@@ -181,7 +184,6 @@ const handleSubmit = (e) => {
 ```javascript
 addPet = (pet) => {};
 ```
-
 
 2. It takes an argument with our pet data but we still need an `id`, can you genereta an `id`?
 
@@ -204,36 +206,32 @@ const handleSubmit = (e) => {
 
 ### Updating a pet data.
 
-1. Create a file called `PetUpdateModal.js` in `Components`
-2. Copy the same modal from your `PetCreateModal` component and fix the namings.
-3. Import the update modal in your `PetItem` component below the adopt button.
+1. We will use the same `PetModal.js` in `Components`.
+2. Import the modal in your `PetItem` component below the adopt button.
 
 ```javascript
 <button type="button" class="btn btn-info" onClick={() => petStore.handleAdopt(pet.id)}>
 Adopt
 </button>
-<PetUpdateModal />
+<PetModal />
 ```
 
-4. For updating, we need the old values for the user to see, so let's pass the old data from `PetItem` to our modal using props.
+3. For updating, we need the old values for the user to see, so let's pass the old data from `PetItem` to our modal using props.
 
 ```javascript
-<PetUpdateModal pet={pet} />
+<PetModal pet={pet} />
 ```
 
-5. In our update modal get those props to create an inital value for our state, also add an id value because we already have one. but how to show them in our fields? hint: use the `value` property.
+4. In our modal get those props to create an inital value for our state, spread the `pet` that is coming as a prop in an object.
 
 ```javascript
-function PetUpdateModal({pet}) {
+function PetModal({pet}) {
   const [show, setShow] = useState(false);
-  const [petForm, setPetForm] = useState({
-    id: pet.id,
-    name: pet.name,
-    type: pet.type,
-    image: pet.image,
-  });
+  const [petForm, setPetForm] = useState({ ...pet });
 ...
 ```
+
+5. Now show them in your fields. Hint: use the `value` property.
 
 ```javascript
  <Form.Group className="mb-3">
@@ -268,7 +266,7 @@ function PetUpdateModal({pet}) {
             </Form.Group>
 ```
 
-6. In our mobx store create an `update` method thats takes an arguemnt and replaces the old pet with the new data coming with the same `id`. Don't forget to mark it as an `action`.
+6. In our mobx store create an `update` method thats takes an arguemnt and replaces the old pet with the new data coming with the same `id`.
 
 ```javascript
 updatePet = (updatedPet) => {
@@ -278,12 +276,38 @@ updatePet = (updatedPet) => {
 };
 ```
 
-7. In `PetUpdateModal` call this new method in the `handleSubmit` function.
+7. In `PetModal` add a condition that checks if we have a prop passed called `pet`, if we have it we want to call the `updatePet` function, and if it's `null` or `undefiend` we will call the `addPet` function.
 
 ```javascript
 const handleSubmit = (e) => {
   e.preventDefault();
-  petStore.updatePet(pet);
+  pet ? petStore.updatePet(petForm) : petStore.addPet(petForm);
   handleClose();
 };
+```
+
+8. Create a new variable called `modalButton` and assign it either the string "Add" if we did not recive a `pet` as a prop, or the string "Update" if we did.
+
+```javascript
+const modalButton = pet ? 'Update' : 'Add';
+```
+
+9. Now Replace the modal button with our new variable.
+
+```javascript
+<button type="button" class="btn btn-info" onClick={handleShow}>
+  {modalButton} a pet
+</button>
+```
+
+10. Do the same for the modal title and the submit button.
+
+```javascript
+<Modal.Title>{modalButton} a pet</Modal.Title>
+```
+
+```javascript
+<button type="button" class="btn btn-info" onClick={handleSubmit}>
+  {modalButton}
+</button>
 ```

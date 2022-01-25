@@ -1,32 +1,28 @@
 import { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import petStore from '../petStore';
-function CreateModal() {
+const PetModal = ({ pet }) => {
   const [show, setShow] = useState(false);
-  const [pet, setPet] = useState({
-    name: '',
-    type: '',
-    image: '',
-  });
+  const [petForm, setPetForm] = useState({ ...pet });
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleChange = (e) => {
-    setPet({ ...pet, [e.target.name]: e.target.value });
+    setPetForm({ ...petForm, [e.target.name]: e.target.value });
   };
-
+  const modalButton = pet ? 'Update' : 'Add';
   const handleSubmit = (e) => {
     e.preventDefault();
-    petStore.addPet(pet);
+    pet ? petStore.updatePet(petForm) : petStore.addPet(petForm);
     handleClose();
   };
   return (
     <>
       <button type="button" class="btn btn-info" onClick={handleShow}>
-        Add a pet
+        {modalButton} a pet
       </button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a pet</Modal.Title>
+          <Modal.Title>{modalButton} a pet</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -35,6 +31,7 @@ function CreateModal() {
               <Form.Control
                 onChange={handleChange}
                 name="name"
+                value={petForm.name}
                 type="text"
                 placeholder="Pet name"
               />
@@ -44,6 +41,7 @@ function CreateModal() {
               <Form.Control
                 onChange={handleChange}
                 name="type"
+                value={petForm.type}
                 type="text"
                 placeholder="Pet type"
               />
@@ -53,6 +51,7 @@ function CreateModal() {
               <Form.Control
                 onChange={handleChange}
                 name="image"
+                value={petForm.image}
                 type="text"
                 placeholder="Pet image url"
               />
@@ -64,12 +63,12 @@ function CreateModal() {
             Close
           </button>
           <button type="button" class="btn btn-info" onClick={handleSubmit}>
-            Add
+            {modalButton}
           </button>
         </Modal.Footer>
       </Modal>
     </>
   );
-}
+};
 
-export default CreateModal;
+export default PetModal;
