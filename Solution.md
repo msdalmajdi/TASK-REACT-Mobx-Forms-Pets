@@ -176,7 +176,7 @@ const handleSubmit = (e) => {
 
 ### Creating in mobx.
 
-1. In our `petStore` let's create a method for adding a pet. Don't forget to mark it as an actions.
+1. In our `petStore` let's create a method for adding a pet.
 
 ```javascript
 addPet = (pet) => {};
@@ -184,11 +184,7 @@ addPet = (pet) => {};
 
 ```javascript
   constructor() {
-    makeObservable(this, {
-      pets: observable,
-      handleAdopt: action,
-      addPet: action,
-    });
+    makeAutoObservable(this);
   }
 ```
 
