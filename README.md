@@ -22,10 +22,10 @@ In this task, you are going to crate a form to add a new pet to the pets website
 ### 2. Bootstrap Form
 
 1. In the Modal body create a form with the following fields: `name`,`type` and `image`. Docs are your friend! [click here for the docs](https://react-bootstrap.netlify.app/forms/overview/#Forms)
-2. Create a state to hold our data.
-3. Create a `handleChange` method that modifies our state object and pass it to every field in their `onChange` property. 
+2. Create a state object to hold the form data.
+3. For every field in the form, pass `onChange` attribute a method. Create that method and call it `handleChange`, that modifies our state object.
 4. Add a `name` property to each field that matches the state object.
-5. Create a `handleSubmit` method that, for now, console logs our state data and closes the modal. Also pass this method to your submit button.
+5. Create a `handleSubmit` method that - for now - console logs our state data and closes the modal. Also pass this method to your submit button.
 6. Don't forget to [prevent the page from refreshing](https://www.robinwieruch.de/react-preventdefault/).
 7. Import our modal in `PetsList` and render it at the top.
 
