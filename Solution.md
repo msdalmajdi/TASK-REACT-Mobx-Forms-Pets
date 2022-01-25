@@ -182,11 +182,6 @@ const handleSubmit = (e) => {
 addPet = (pet) => {};
 ```
 
-```javascript
-  constructor() {
-    makeAutoObservable(this);
-  }
-```
 
 2. It takes an argument with our pet data but we still need an `id`, can you genereta an `id`?
 
