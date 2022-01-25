@@ -21,7 +21,7 @@ In this task, you are going to crate a form to add a new pet to the pets website
 
 ### 2. Bootstrap Form
 
-1. In the Modal body create a form with the following fields: `name`,`type` and image docs are your friend! [click here for the docs](https://react-bootstrap.github.io/components/forms/)
+1. In the Modal body create a form with the following fields: `name`,`type` and image docs are your friend! [click here for the docs](https://react-bootstrap.netlify.app/forms/overview/#Forms)
 2. Create a state to hold our data.
 3. Create a `handleChange` method that modifies our state object and pass it to every field in their `onChange` property. 
 4. Add a `name` property to each field that matches the state object.
