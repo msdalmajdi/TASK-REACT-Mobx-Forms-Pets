@@ -80,7 +80,7 @@ const handleShow = () => setShow(true);
 2. Create a state to hold our data.
 
 ```javascript
-const [pet, setPet] = useState({
+const [petForm, setPetForm] = useState({
   name: '',
   type: '',
   image: '',
@@ -91,7 +91,7 @@ const [pet, setPet] = useState({
 
 ```javascript
 const handleChange = (e) => {
-  setPet({ ...pet, [e.target.name]: e.target.value });
+  setPetForm({ ...petForm, [e.target.name]: e.target.value });
 };
 ```
 
