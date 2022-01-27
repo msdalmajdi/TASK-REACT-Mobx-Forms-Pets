@@ -1,5 +1,5 @@
-import { action, makeObservable, observable } from 'mobx';
-import petsData from './petsData';
+import { action, makeObservable, observable } from "mobx";
+import petsData from "./petsData";
 class PetStore {
   pets = petsData;
 

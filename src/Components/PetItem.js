@@ -1,6 +1,5 @@
-import petStore from '../petStore';
-export default function PetItem(props) {
-  const pet = props.pet;
+import petStore from "../petStore";
+const PetItem = ({ pet }) => {
   return (
     <div class="col-lg-4 col-md-8 col-sm-10">
       <div class="single-doctor">
@@ -18,4 +17,6 @@ export default function PetItem(props) {
       </div>
     </div>
   );
-}
+};
+
+export default PetItem;
