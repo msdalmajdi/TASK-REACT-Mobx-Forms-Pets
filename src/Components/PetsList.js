@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import PetItem from './PetItem';
-import { observer } from 'mobx-react';
-import petStore from '../petStore';
+import React, { useState } from "react";
+import PetItem from "./PetItem";
+import { observer } from "mobx-react";
+import petStore from "../petStore";
+import PetAdd from "./PetAdd";
 function PetsList() {
-  const [query, setQuery] = useState('');
-  const [type, setType] = useState('');
+  const [query, setQuery] = useState("");
+  const [type, setType] = useState("");
   const pets = petStore.pets
     .filter(
       (pet) =>
@@ -30,11 +31,12 @@ function PetsList() {
                   aria-describedby="search-addon"
                   onChange={(e) => setQuery(e.target.value)}
                 />
+                <PetAdd />
               </div>
               <br />
-              Type:
+              <h6>Type:</h6>
               <select
-                class="form-select"
+                class="form-select d-inline"
                 aria-label="Default select example"
                 onChange={(e) => setType(e.target.value)}
               >
