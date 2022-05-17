@@ -1,4 +1,5 @@
-import petStore from '../petStore';
+import petStore from "../petStore";
+import PetUpdate from "./PetUpdate";
 export default function PetItem(props) {
   const pet = props.pet;
   return (
@@ -14,6 +15,7 @@ export default function PetItem(props) {
           >
             Adopt
           </button>
+          <PetUpdate props={props} />
         </div>
       </div>
     </div>
