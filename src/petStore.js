@@ -22,12 +22,7 @@ class PetStore {
     const indexOfObject = this.pets.findIndex((object) => {
       return object.id === updatedPet["id"];
     });
-
     this.pets[indexOfObject] = updatedPet;
-
-    //this.pets.splice(indexOfObject, 1);
-
-    //this.pets.push(updatedPet);
   };
 }
 
